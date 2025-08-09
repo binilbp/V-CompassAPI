@@ -11,9 +11,10 @@ app = FastAPI()
 # This allows your React app (running on localhost:3000 or similar)
 # to make requests to this backend (running on localhost:8000).
 origins = [
-    "http://localhost",
-    "http://localhost:3000",
-    "http://localhost:5173", # Common port for Vite React projects
+    "https://v-compass.vercel.app"
+    # "http://localhost",
+    # "http://localhost:3000",
+    # "http://localhost:5173", # Common port for Vite React projects
 ]
 
 app.add_middleware(

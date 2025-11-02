@@ -92,7 +92,7 @@ def get_planes_near_me(
         if plane:
             # covert to km and append that too
             plane["distance"] = round(distance / 1000, 1)
-            return {plane}
+            return {"plane": plane}
         else:
             return None
 

@@ -45,8 +45,8 @@ def get_planes_near_me(
     # Define a bounding box around the user's location
     # 1 degree of latitude is approx. 111km
     # convert 25 km to degrees
-    lat_change = 10 / 111.0
-    lon_change = 10 / (111.0 * math.cos(math.radians(lat)))
+    lat_change = 100 / 111.0
+    lon_change = 100 / (111.0 * math.cos(math.radians(lat)))
     params = {
         "lamin": lat - lat_change,
         "lomin": lon - lon_change,
@@ -72,7 +72,6 @@ def get_planes_near_me(
                     # strip extra space from name only if not none
                     "callsign": state[1].strip() if state[1] else None,
                     "lon": state[5],  # longitude value
-                    "long": state[5],  # longitude value
                     "lat": state[6],  # latitude value
                     "altitude_m": state[7],  # Barometric altitude in meters
                     "velocity_ms": state[9],  # Speed in meters/second
@@ -93,7 +92,7 @@ def get_planes_near_me(
         if plane:
             # covert to km and append that too
             plane["distance"] = round(distance / 1000, 1)
-            return {"plane": plane}
+            return {plane}
         else:
             return None
 

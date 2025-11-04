@@ -13,10 +13,11 @@ app = FastAPI()
 # uncomment the relevant addressed to enable data transfer from it
 # others are blocked
 origins = [
-    # "https://v-compass.vercel.app"
+    "https://v-compass-main.vercel.app",
+    "https://v-compass.vercel.app",
     # "http://localhost",
     # "http://localhost:3000",
-    "http://localhost:5173",  # Common port for Vite React projects
+    # "http://localhost:5173",  # Common port for Vite React projects
 ]
 
 app.add_middleware(
@@ -39,14 +40,13 @@ def get_planes_near_me(
 ):
     """
     Fetches plane data from OpenSky Network for a bounding box around the user's location.
-    The bounding box is roughly 2 degrees, which is over 200km.
     Filtering by exact radius is done on the frontend.
     """
     # Define a bounding box around the user's location
     # 1 degree of latitude is approx. 111km
     # convert 25 km to degrees
-    lat_change = 100 / 111.0
-    lon_change = 100 / (111.0 * math.cos(math.radians(lat)))
+    lat_change = 10 / 111.0
+    lon_change = 10 / (111.0 * math.cos(math.radians(lat)))
     params = {
         "lamin": lat - lat_change,
         "lomin": lon - lon_change,

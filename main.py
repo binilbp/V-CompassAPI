@@ -17,7 +17,7 @@ origins = [
     "https://v-compass.vercel.app",
     # "http://localhost",
     # "http://localhost:3000",
-    # "http://localhost:5173",  # Common port for Vite React projects
+    "http://localhost:5173",
 ]
 
 app.add_middleware(
@@ -45,8 +45,8 @@ def get_planes_near_me(
     # Define a bounding box around the user's location
     # 1 degree of latitude is approx. 111km
     # convert 25 km to degrees
-    lat_change = 10 / 111.0
-    lon_change = 10 / (111.0 * math.cos(math.radians(lat)))
+    lat_change = 20 / 111.0
+    lon_change = 20 / (111.0 * math.cos(math.radians(lat)))
     params = {
         "lamin": lat - lat_change,
         "lomin": lon - lon_change,
